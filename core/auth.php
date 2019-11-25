@@ -36,7 +36,11 @@ class auth
 
 	private function getToken()
 	{
-		$token = (isset($_SERVER['HTTP_X_AUTHORIZATION'])) ? $_SERVER['HTTP_X_AUTHORIZATION'] : '';
+		$token = (isset($_SERVER['HTTP_AUTHORIZATION'])) ? $_SERVER['HTTP_AUTHORIZATION'] : '';
+
+		if (empty($token)) {
+			$token = (isset($_SERVER['HTTP_X_AUTHORIZATION'])) ? $_SERVER['HTTP_X_AUTHORIZATION'] : '';
+		}
 
 		if (empty($token)) {
 			return false;
