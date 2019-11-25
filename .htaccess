@@ -1,0 +1,13 @@
+AddDefaultCharset UTF-8
+
+RewriteEngine On
+RewriteBase /
+
+# если запрашиваемый файл существует, то возращаем его
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .* - [L]
+
+# иначе запускаем index.php
+RewriteRule .* index.php [L]
+
+Options -Indexes
